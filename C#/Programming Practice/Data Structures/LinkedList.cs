@@ -6,65 +6,71 @@ using System.Threading.Tasks;
 
 namespace Programming_Practice
 {
-    class Node
+    class Node<T>
     {
-        private int data = 0;
-        private Node next = null;
+        private T data;
+        private Node<T> next;
 
-        public int Data { get { return data; } set { data = value; } }
-        public Node Next { get { return next; } set { next = value; } }
+        public T Data { get { return this.data; } set { this.data = value; } }
+        public Node<T> Next { get { return this.next; } set { this.next = value; } }
 
-        public Node() { data = 0; next = null; }
-        public Node(int newData) { data = newData; next = null; }
+        public Node() { this.data = default(T); this.next = null; }
+        public Node(T newData) { this.data = newData; this.next = null; }
+        public Node(Node<T> other) { this.data = other.data; this.next = other.next; }
     }
 
-    class RyanList
+    class GenericList<T>
     {
-        private Node head;
+        private Node<T> head;
 
-        public Node Head
+        public Node<T> Head
         {
             get { return head != null ? head : null; }
             set { head = value; }
         }
 
-        /*public Node GetHead() { return head; }
-        public void SetHead(int newData) { head = new Node(newData); }
-        public void SetHead(Node newNode) { head = newNode; }//*/
-
-        public RyanList() 
+        public GenericList() 
         {
             Reset();
         }
 
-        public RyanList(int newData)
+        public GenericList(T newData)
         {
-            head = new Node(newData);
+            head = new Node<T>(newData);
         }
 
-        public void Add(int newData)
+        public void Add(T newData)
         {
-            Node temp = head;
+            Node<T> temp = head;
             while (temp.Next != null)
                 temp = temp.Next;
 
-            temp.Next = new Node(newData);
+            temp.Next = new Node<T>(newData);
         }
 
+        /// <summary>
+        /// Prints all data in the list
+        /// </summary>
         public void Print()
         {
-            Node temp = head;
+            Node<T> temp = head;
+            Console.Write("| ");
             while (temp != null)
             {
-                Console.WriteLine(temp.Data);
+                Console.Write(temp.Data + " | ");
                 temp = temp.Next;
             }
+            Console.Write("\n");
         }
 
+        /// <summary>
+        /// Count the number of nodes in the list
+        /// </summary>
+        /// <returns></returns>
         public int Count()
         {
             int counter = 0;
-            Node temp = head;
+            Node<T> temp = head;
             while (temp != null)
             {
                 temp = temp.Next;
@@ -74,13 +80,54 @@ namespace Programming_Practice
             return counter;
         }
 
-        public Node EndOfList()
+        /// <summary>
+        /// Get the last Node in the list
+        /// </summary>
+        /// <returns>A copy of the last node</returns>
+        public Node<T> EndOfList()
         {
-            Node temp = head;
+            Node<T> temp = head;
             while (temp.Next != null)
                 temp = temp.Next;
 
             return temp;
+        }
+
+        /// <summary>
+        /// Delete a node within the list
+        /// </summary>
+        /// <param name="index">The position of the node</param>
+        public void Delete(int index)
+        {
+            // If first index or lower
+            // remove the head node
+            if (index <= 1)
+                head = head.Next;
+            else
+            {
+                // Check to make sure index is within 
+                // the size of the list
+                int currentSize = this.Count();
+                if (index > currentSize)
+                    index = currentSize;
+
+                // Iterate to the node before the
+                // node we want to delete
+                Node<T> iterator = this.head;
+                while (index > 2)
+                {
+                    iterator = iterator.Next;
+                    --index;
+                }
+                
+                // If within size replace the
+                // node with the node after it
+                // If deleting tail, set tail to null
+                if (iterator.Next != null)
+                    iterator.Next = iterator.Next.Next;
+                else
+                    iterator = null;                   
+            }
         }
 
         private void Reset()

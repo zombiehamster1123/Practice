@@ -4,3 +4,9 @@ L:\Resumes\Programming Practice\C#\Programming Practice\bin\Debug\Programming Pr
 L:\Resumes\Programming Practice\C#\Programming Practice\bin\Debug\Programming Practice.pdb
 L:\Resumes\Programming Practice\C#\Programming Practice\obj\Debug\Programming Practice.exe
 L:\Resumes\Programming Practice\C#\Programming Practice\obj\Debug\Programming Practice.pdb
+G:\Career\Programming Practice\C#\Programming Practice\bin\Debug\Programming Practice.exe.config
+G:\Career\Programming Practice\C#\Programming Practice\obj\Debug\Programming Practice.exe
+G:\Career\Programming Practice\C#\Programming Practice\obj\Debug\Programming Practice.pdb
+G:\Career\Programming Practice\C#\Programming Practice\bin\Debug\Programming Practice.exe
+G:\Career\Programming Practice\C#\Programming Practice\bin\Debug\Programming Practice.pdb
+G:\Career\Programming Practice\C#\Programming Practice\obj\Debug\Programming Practice.csprojResolveAssemblyReference.cache

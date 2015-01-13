@@ -10,13 +10,17 @@ namespace Programming_Practice
     {
         static void Main(string[] args)
         {
-            RyanList list = new RyanList(5);
+            GenericList<int> list = new GenericList<int>(5);
             list.Add(1);
             list.Add(3);
             list.Add(2);
             list.Print();
+            list.Delete(1);
+            Console.WriteLine("Just Deleted");
+            list.Print();
             Console.WriteLine("Last Node: " + list.EndOfList().Data);
             Console.WriteLine("Count: " + list.Count());
+            Console.WriteLine("Press enter to exit");
             Console.ReadLine();
         }
     }
