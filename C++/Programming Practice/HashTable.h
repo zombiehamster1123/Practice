@@ -1,24 +1,25 @@
 #include "Tree.h"
-#define TABLE_SIZE 2
+#define TABLE_SIZE 10
 
-TEMPLATED
+HASH_TEMPLATE
 class HashTable
 {
 private:
-	Hash<T>* head = nullptr;
+	Hash<T, N>* head = nullptr;
 	int size = 0;
 
 	void Create();
-	void DeepCopy(const HashTable<T>& otherTable);
+	void DeepCopy(const HashTable<T, N>& otherTable);
 	void Release();
 	void Print();
+	Hash<T, N>* LastNodeInHash(const int);
 
 public:
 	HashTable();
 	HashTable(const T);
 	HashTable(const T*, UINT);
 	HashTable(const HashTable&);
-	HashTable<T>& operator = (const HashTable&);
+	HashTable<T, N>& operator = (const HashTable&);
 	~HashTable();
 
 	void Add(T);
@@ -26,116 +27,161 @@ public:
 	friend std::ostream& operator << (std::ostream& out, HashTable& ds) { ds.Print(); return out; }
 };
 
-TEMPLATED HashTable<T>::HashTable()
+HASH_TEMPLATE HashTable<T, N>::HashTable()
 {
 	this->Create();
 }
 
-TEMPLATED HashTable<T>::HashTable(const T data)
+HASH_TEMPLATE HashTable<T, N>::HashTable(const T data)
 {
 	this->Create();
-	this->head[0] = Hash<T>(data);
+	this->head[0] = Hash<T, N>(data);
 	++this->size;
 }
 
-TEMPLATED HashTable<T>::HashTable(const T* arrayOfData, UINT arraySize)
+HASH_TEMPLATE HashTable<T, N>::HashTable(const T* arrayOfData, UINT arraySize)
 {
 	this->Create();
 	for (int i = 0; i < arraySize; ++i)
 		this->Add(arrayOfData[i]);
 }
 
-TEMPLATED HashTable<T>::HashTable(const HashTable& otherTable)
+HASH_TEMPLATE HashTable<T, N>::HashTable(const HashTable& otherTable)
 {
 	this->Release();
-	this->DeepCopy();
+	this->DeepCopy(otherTable);
 }
 
-TEMPLATED HashTable<T>& HashTable<T>::operator = (const HashTable&)
+HASH_TEMPLATE HashTable<T, N>& HashTable<T, N>::operator = (const HashTable& otherTable)
 {
 	this->Release();
-	this->DeepCopy();
+	this->DeepCopy(otherTable);
 
 	return *this;
 }
 
-TEMPLATED HashTable<T>::~HashTable()
+HASH_TEMPLATE HashTable<T, N>::~HashTable()
 {
 	this->Release();
 }
 
-TEMPLATED void HashTable<T>::Create()
+HASH_TEMPLATE void HashTable<T, N>::Create()
 {
-	this->head = new Hash<T>[TABLE_SIZE];
+	this->head = new Hash<T, N>[TABLE_SIZE];
 	this->size = 0;
 }
 
-TEMPLATED void HashTable<T>::Release()
+HASH_TEMPLATE void HashTable<T, N>::Release()
 {
-	Hash<T> *iterator, *holder;
-
-	for (int i = 0; i < TABLE_SIZE; ++i)
+	if (this->size)
 	{
-		iterator = this->head[i].next;
-		while (iterator != nullptr)
+		Hash<T, N> *iterator, *holder;
+
+		for (int i = 0; i < TABLE_SIZE; ++i)
 		{
-			holder = iterator->next;
-			delete iterator;
-			iterator = holder;
-		}
-	}
-
-	delete[] this->head;
-	this->size = 0;
-}
-
-TEMPLATED void HashTable<T>::DeepCopy(const HashTable<T>& otherTable)
-{
-	if (this->size > 0)
-	{
-		this->Release();
-		Hash<T> iterator = head;
-
-		if (otherTable.size < TABLE_SIZE)
-			int intHolder = otherTable.size;
-		else
-			int intHolder = TABLE_SIZE;
-
-		for (int i = 0; i < intHolder; ++i)
-		{
-			this->head[i] = new Hash<T>(otherTable.head[i]);
-			iterator = this->head[i];
-			while (iterator->next != nullptr)
+			iterator = this->head[i].next;
+			while (iterator != nullptr)
 			{
-				iterator->next = new Hash<T>(iterator->next);
-				iterator = iterator->next;
+				holder = iterator->next;
+				delete iterator;
+				iterator = holder;
 			}
 		}
 
-		this->size = otherTable.size;
+		delete[] this->head;
+		head = nullptr;
+		this->size = 0;
 	}
 }
 
-TEMPLATED void HashTable<T>::Add(T data)
+HASH_TEMPLATE Hash<T, N>* HashTable<T, N>::LastNodeInHash(const int arrayPos)
+{
+	if (this->size)
+	{
+		if (0 <= arrayPos && arrayPos < this->size)
+		{
+			Hash<T, N> *iterator = &this->head[arrayPos];
+			while (iterator->next != nullptr)
+				iterator = iterator->next;
+
+			return iterator;
+		}
+	}
+
+	return null;
+}
+
+HASH_TEMPLATE void HashTable<T, N>::DeepCopy(const HashTable<T, N>& otherTable)
+{
+	if (otherTable.size)
+	{
+		this->Release();
+		this->Create();
+
+		Hash<T, N> *iterator, *otherIterator;
+		this->size = otherTable.size;
+
+		for (int i = 0; i < otherTable.size; ++i)
+		{
+			/*this->head[i] = Hash<T, N>(otherTable.head[i]);
+			iterator = this->LastNodeInHash(i);
+			otherIterator = otherTable.LastNodeInHash(i);
+			iterator->next = new Hash<T, N>(*otherIterator);//*/
+			this->head[i] = Hash<T, N>(otherTable.head[i]);
+			iterator = &this->head[i];
+			otherIterator = &otherTable.head[i];
+			while (otherIterator->next != nullptr)
+			{
+				iterator->next = new Hash<T, N>(*otherIterator->next);
+				otherIterator = otherIterator->next;
+				iterator = iterator->next;
+			}
+		}
+	}
+}
+
+HASH_TEMPLATE void HashTable<T, N>::Add(T data)
 {
 	if (this->size < TABLE_SIZE)
-		this->head[this->size] = Hash<T>(data);
+		this->head[this->size] = Hash<T, N>(data);
 	else
 	{
-		Hash<T>* iterator = &head[this->size % TABLE_SIZE];
+		Hash<T, N>* iterator = &head[this->size % TABLE_SIZE];
 		while (iterator->next != nullptr)
 			iterator = iterator->next;
 
-		iterator->next = new Hash<T>(data);
+		iterator->next = new Hash<T, N>(data);
 	}
 
 	++(this->size);
 }
 
-TEMPLATED void HashTable<T>::Print()
+/*HASH_TEMPLATE void HashTable<T, N>::Add(T data, N key)
+{
+	//int place = 0;
+	bool placed = false;
+	for (int i = 0; i < this->size; ++i)
+	{
+		if (head[i].key == key)
+		{
+			Hash<T, N>* iterator = &head[i];
+			while (iterator->next != nullptr)
+				iterator = iterator->next;
+			iterator->next = new Hash<T, N>(data, key);
+			placed = true;
+		}
+	}
+
+	if (!placed)
+	{
+
+	}
+}//*/
+
+HASH_TEMPLATE void HashTable<T, N>::Print()
 {
 	int depth;
-	Hash<T>* iterator;
+	Hash<T, N>* iterator;
 
 	for (int i = 0; i < this->size; ++i)
 		if (i < TABLE_SIZE)

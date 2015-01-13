@@ -72,6 +72,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bitwise.h" />
+    <ClInclude Include="Dictionary.h" />
     <ClInclude Include="HashTable.h" />
     <ClInclude Include="Stack.h" />
     <ClInclude Include="Threads.h" />

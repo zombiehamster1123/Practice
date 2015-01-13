@@ -6,6 +6,8 @@
 #include "Bitwise.h"
 #include "Threads.h"
 
+#define NEWLINE "\n"
+
 using namespace std;
 
 void TestPracticeMethods()
@@ -27,6 +29,16 @@ void TestPracticeMethods()
 		cout << " | " << arr3[i];
 
 	cout << " | \n";
+
+	int a[7] = { 1, 2, 5, 7, 0, 0, 0};
+	int b[3] = { 3, 4, 6  };
+	//BookMergeIntoArray(a, b, 4, 3);
+	//cout << "Time: " << measure<>::execution(BookMergeIntoArray, a, b, 4, 3) << "\n";
+	
+	/*for (int i = 0; i < 7; ++i)
+		cout << a[i] << ", ";//*/
+
+	cout << SortAnagram("lasdfkj") << "\n";
 }
 
 void TestLinkedList()
@@ -80,10 +92,19 @@ void TestBinaryTree()
 
 void TestHashTable()
 {
-	HashTable<int> ht(10);
+	HashTable<int, int> ht(10);
 	ht.Add(1);
 	ht.Add(15);
-	cout << "Hash Table: " << ht;//*/
+	cout << "Hash Table1: " << ht << NEWLINE;//*/
+	HashTable<int, int> ht2(123);
+	ht2.Add(145);
+	ht2.Add(156);
+	ht2.Add(200);
+	cout << "Hash Table2: " << ht2 << NEWLINE;
+
+	ht = ht2;
+	cout << "Hash Table1: " << ht << NEWLINE;
+	cout << "Hash Table2: " << ht2 << NEWLINE;
 }
 
 void TestBitwise()
@@ -100,12 +121,12 @@ void TestThreading()
 
 void program()
 {
-	/*TestPracticeMethods();
-	TestLinkedList();
-	TestStack();
-	TestBinaryTree();
-	TestBitwise();//*/
-	//TestThreading();	
+	TestPracticeMethods();
+	//TestLinkedList();
+	//TestStack();
+	/*TestBinaryTree();
+	TestBitwise();
+	TestThreading();*/	
 	TestHashTable();
 
 	cout << "\nPress Enter to Continue\n";//*/

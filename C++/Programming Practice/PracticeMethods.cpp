@@ -60,3 +60,68 @@ void HeapSort(int listToSort[], int lengthOfList)
 {
 
 }
+
+void MyMergeIntoArray(int* a, int* b, int aLength, int bLength)
+{
+	int totalLength = aLength + bLength;
+	for (int i = aLength; i < totalLength; ++i)
+		a[i] = b[i - bLength - 1];
+
+	for (int i = aLength; i < totalLength; ++i)
+	{
+		int holder = i;
+		while (a[holder] < a[holder - 1])
+		{
+			swap(a[holder], a[holder - 1]);
+			--holder;
+		}
+	}
+
+	for (int i = 0; i < totalLength; ++i)
+		cout << a[i] << ", ";
+}
+
+void BookMergeIntoArray(int* a, int* b, int lastA, int lastB)
+{
+	int indexA = lastA - 1;
+	int indexB = lastB - 1;
+	int indexMerged = lastB + lastA - 1;
+
+	while (indexB >= 0)
+	{
+		if (indexA >= 0 && a[indexA] > b[indexB])
+		{
+			a[indexMerged] = a[indexA];
+			--indexA;
+		}
+		else
+		{
+			a[indexMerged] = b[indexB];
+			--indexB;
+		}
+		--indexMerged;
+	}
+
+	for (int i = 0; i < lastA + lastB; ++i)
+		cout << a[i] << ", ";
+}
+
+string SortAnagram(string s)
+{
+	for (int i = 1; i < s.length(); ++i)
+	{
+		int holder = i;
+		if (s[holder] < s[holder - 1] && holder >= 1)
+		{
+			swap(s[holder], s[holder - 1]);
+			--holder;
+		}
+	}
+
+	return s;
+}
+
+void AnagramAlgorithm(string anagrams[])
+{
+
+}
