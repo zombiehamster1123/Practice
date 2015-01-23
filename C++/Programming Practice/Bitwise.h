@@ -1,3 +1,6 @@
+#ifndef BITWISE_H
+#define BITWISE_H
+
 #include <iostream>
 #include <bitset>
 
@@ -24,3 +27,9 @@ int countBits(int);
 int liamCountBits(int);
 int maxXor(int, int);
 int maxXor2(int, int);
+void bitOddEvenSwap(int);
+int bookSwapOddEvenBits(int);
+int numFlipConverts(int, int);
+int bookBitSwapRequired(int, int);
+
+#endif

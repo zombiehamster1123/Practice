@@ -6,27 +6,21 @@ using System.Threading.Tasks;
 
 namespace Programming_Practice
 {
-    class Node<T>
+     class GenericList<T> : IDataStructure
     {
-        private T data;
-        private Node<T> next;
-
-        public T Data { get { return this.data; } set { this.data = value; } }
-        public Node<T> Next { get { return this.next; } set { this.next = value; } }
-
-        public Node() { this.data = default(T); this.next = null; }
-        public Node(T newData) { this.data = newData; this.next = null; }
-        public Node(Node<T> other) { this.data = other.data; this.next = other.next; }
-    }
-
-    class GenericList<T>
-    {
-        private Node<T> head;
+        private Node<T> head = null;
+        private int size = 0;
 
         public Node<T> Head
         {
-            get { return head != null ? head : null; }
-            set { head = value; }
+            get { return this.head != null ? this.head : null; }
+            set { this.head = value; }
+        }
+
+        public int Size
+        {
+            get { return this.size; }
+            set { this.size = value; }
         }
 
         public GenericList() 
@@ -37,15 +31,61 @@ namespace Programming_Practice
         public GenericList(T newData)
         {
             head = new Node<T>(newData);
+            this.size = 1;
+        }
+
+        public GenericList(GenericList<T> aList)
+        {
+            this.Reset();
+            for (int i = 0; i < aList.size; ++i)
+                this.Add(aList[i].Data);
+        }
+
+        /// <summary>
+        /// Get a particular node in the list
+        /// </summary>
+        /// <param name="index">Depth in the list</param>
+        /// <returns>Node</returns>
+        public Node<T> this[int index]
+        {
+            get
+            {
+                if (this.isValidIndex(index))
+                {
+                    Node<T> iterator = head;
+                    for (int i = 0; i < index; ++i)
+                        iterator = iterator.Next;
+
+                    return iterator;
+                }
+
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Checks to see if index is within range
+        /// of the size of the data structure
+        /// </summary>
+        /// <param name="index">The number to test with</param>
+        /// <returns></returns>
+        public bool isValidIndex(int index)
+        {
+            return 0 <= index && index < this.size;
         }
 
         public void Add(T newData)
         {
-            Node<T> temp = head;
-            while (temp.Next != null)
-                temp = temp.Next;
+            this.EndOfList().Next = new Node<T>(newData);
+            ++size;
+        }
 
-            temp.Next = new Node<T>(newData);
+        public bool IsEmpty()
+        {
+            if (head == null)
+                return true;
+
+            return false;
         }
 
         /// <summary>
@@ -54,7 +94,6 @@ namespace Programming_Practice
         public void Print()
         {
             Node<T> temp = head;
-            Console.Write("| ");
             while (temp != null)
             {
                 Console.Write(temp.Data + " | ");
@@ -69,15 +108,18 @@ namespace Programming_Practice
         /// <returns></returns>
         public int Count()
         {
-            int counter = 0;
-            Node<T> temp = head;
-            while (temp != null)
-            {
-                temp = temp.Next;
-                ++counter;
-            }
+            // In case I ever decide to remove the
+            // size member
+            //int counter = 0;
+            //Node<T> temp = head;
+            //while (temp != null)
+            //{
+            //    temp = temp.Next;
+            //    ++counter;
+            //}
 
-            return counter;
+            //return counter;
+            return this.size;
         }
 
         /// <summary>
@@ -86,11 +128,16 @@ namespace Programming_Practice
         /// <returns>A copy of the last node</returns>
         public Node<T> EndOfList()
         {
-            Node<T> temp = head;
-            while (temp.Next != null)
-                temp = temp.Next;
+            if (this.size > 0)
+            {
+                Node<T> temp = this.head;
+                while (temp.Next != null)
+                    temp = temp.Next;
 
-            return temp;
+                return temp;
+            }
+
+            return null;
         }
 
         /// <summary>
@@ -99,40 +146,20 @@ namespace Programming_Practice
         /// <param name="index">The position of the node</param>
         public void Delete(int index)
         {
-            // If first index or lower
-            // remove the head node
-            if (index <= 1)
+            if (index <= 0)
                 head = head.Next;
+            else if (this.size < index)
+                this[this.size - 2].Next = null;
             else
-            {
-                // Check to make sure index is within 
-                // the size of the list
-                int currentSize = this.Count();
-                if (index > currentSize)
-                    index = currentSize;
+                this[index - 1].Next = this[index + 1];
 
-                // Iterate to the node before the
-                // node we want to delete
-                Node<T> iterator = this.head;
-                while (index > 2)
-                {
-                    iterator = iterator.Next;
-                    --index;
-                }
-                
-                // If within size replace the
-                // node with the node after it
-                // If deleting tail, set tail to null
-                if (iterator.Next != null)
-                    iterator.Next = iterator.Next.Next;
-                else
-                    iterator = null;                   
-            }
+            --size;
         }
 
         private void Reset()
         {
-            head = null;
+            this.head = null;
+            this.size = 0;
         }
     }
 }

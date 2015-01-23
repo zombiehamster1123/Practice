@@ -1,4 +1,7 @@
-#include "Tree.h"
+#ifndef HASHTABLE_H
+#define HASHTABLE_H
+
+#include "Nodes.h"
 #define TABLE_SIZE 10
 
 HASH_TEMPLATE
@@ -123,15 +126,11 @@ HASH_TEMPLATE void HashTable<T, N>::DeepCopy(const HashTable<T, N>& otherTable)
 
 		for (int i = 0; i < otherTable.size; ++i)
 		{
-			/*this->head[i] = Hash<T, N>(otherTable.head[i]);
-			iterator = this->LastNodeInHash(i);
-			otherIterator = otherTable.LastNodeInHash(i);
-			iterator->next = new Hash<T, N>(*otherIterator);//*/
 			this->head[i] = Hash<T, N>(otherTable.head[i]);
-			iterator = &this->head[i];
 			otherIterator = &otherTable.head[i];
 			while (otherIterator->next != nullptr)
 			{
+				iterator = &this->head[i];
 				iterator->next = new Hash<T, N>(*otherIterator->next);
 				otherIterator = otherIterator->next;
 				iterator = iterator->next;
@@ -199,3 +198,5 @@ HASH_TEMPLATE void HashTable<T, N>::Print()
 			std::cout << *iterator << " | ";
 		}
 }
+
+#endif

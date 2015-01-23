@@ -41,13 +41,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data Structures\Algorithms.cs" />
+    <Compile Include="Design Patterns\Behavioral\ChainOfResponsibility.cs" />
+    <Compile Include="Design Patterns\Behavioral\Command.cs" />
+    <Compile Include="Design Patterns\Creational\Builder.cs" />
+    <Compile Include="Design Patterns\Creational\AbstractFactory.cs" />
+    <Compile Include="Data Structures\HashTable.cs" />
+    <Compile Include="Data Structures\IDataStructure.cs" />
     <Compile Include="Data Structures\LinkedList.cs" />
+    <Compile Include="Data Structures\Stack.cs" />
+    <Compile Include="Design Patterns\Creational\FactoryMethod.cs" />
+    <Compile Include="Design Patterns\Creational\Prototype.cs" />
+    <Compile Include="Design Patterns\Creational\Singleton.cs" />
+    <Compile Include="Design Patterns\Structural\Adapter.cs" />
+    <Compile Include="Design Patterns\Structural\Bridge.cs" />
+    <Compile Include="Design Patterns\Structural\Composite.cs" />
+    <Compile Include="Design Patterns\Structural\Decorator.cs" />
+    <Compile Include="Design Patterns\Structural\Facade.cs" />
+    <Compile Include="Design Patterns\Structural\Flyweight.cs" />
+    <Compile Include="Design Patterns\Structural\Proxy.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

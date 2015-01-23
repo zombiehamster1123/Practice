@@ -1,3 +1,6 @@
+#ifndef PRACTICEMETHODS_H
+#define PRACTICEMETHODS_H
+
 #include <string>
 #include <iostream>
 #include <chrono>
@@ -27,3 +30,5 @@ struct measure
 		return duration.count();
 	}
 };
+
+#endif

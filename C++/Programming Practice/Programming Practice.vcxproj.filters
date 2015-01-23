@@ -13,6 +13,21 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Data Structures">
+      <UniqueIdentifier>{abfad75f-bcb0-4621-a9ba-286465084bcf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Design Patterns Headers">
+      <UniqueIdentifier>{eecb92e1-3b45-4855-83ed-fc1025f20cb1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Design Patterns">
+      <UniqueIdentifier>{7dc2caa8-c180-4089-a295-cc4e9063524c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Design Patterns\AbstractFactory">
+      <UniqueIdentifier>{efb33423-435d-4a16-b60a-8f01d23e49a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Design Patterns Headers\Abstract Factory Headers">
+      <UniqueIdentifier>{95ed36b0-fcf1-4d61-ac57-5c1691438984}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -21,33 +36,27 @@
     <ClCompile Include="PracticeMethods.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Tree.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Bitwise.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Threads.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SmartPointers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AbstractFactory.cpp">
+      <Filter>Source Files\Design Patterns\AbstractFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="AbstractProductA.cpp">
+      <Filter>Source Files\Design Patterns\AbstractFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="ProductA1.cpp">
+      <Filter>Source Files\Design Patterns\AbstractFactory</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PracticeMethods.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Nodes.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SingleyLinkedList.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Tree.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Stack.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="HashTable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Bitwise.h">
@@ -56,8 +65,44 @@
     <ClInclude Include="Threads.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Dictionary.h">
+    <ClInclude Include="SmartPointers.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Dictionary.h">
+      <Filter>Header Files\Data Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="HashTable.h">
+      <Filter>Header Files\Data Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="Nodes.h">
+      <Filter>Header Files\Data Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="Queue.h">
+      <Filter>Header Files\Data Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="Stack.h">
+      <Filter>Header Files\Data Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="Tree.h">
+      <Filter>Header Files\Data Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="SingleyLinkedList.h">
+      <Filter>Header Files\Data Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="UniversalHeaders.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractFactory.h">
+      <Filter>Header Files\Design Patterns Headers\Abstract Factory Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractProductA.h">
+      <Filter>Header Files\Design Patterns Headers\Abstract Factory Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ProductA1.h">
+      <Filter>Header Files\Design Patterns Headers\Abstract Factory Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Client.h">
+      <Filter>Header Files\Design Patterns Headers\Abstract Factory Headers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

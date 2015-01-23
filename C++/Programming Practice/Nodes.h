@@ -1,13 +1,10 @@
-#include <iostream>
-#include <ostream>
-#define UINT unsigned int
-#define TEMPLATED template <class T>
-#define HASH_TEMPLATE template<class T, class N>
-#define ReleaseMacro(x) { if(x && x != nullptr){ delete x; x = nullptr; } }
+#ifndef NODES_H
+#define NODES_H
+
+#include "UniversalHeaders.h"
 
 TEMPLATED struct SingleNode
 {
-public:
 	T storedData = NULL;
 	SingleNode* next = nullptr;
 
@@ -23,7 +20,6 @@ public:
 
 TEMPLATED struct DoubleNode
 {
-public:
 	T storedData = NULL;
 	DoubleNode* left = nullptr;
 	DoubleNode* right = nullptr;
@@ -40,10 +36,9 @@ public:
 
 HASH_TEMPLATE struct Hash
 {
-public:
 	T storedData = NULL;
 	N key = NULL;
-	Hash* next;
+	Hash* next = nullptr;
 
 	Hash() { this->storedData = NULL; this->key = NULL; this->next = nullptr; }
 	Hash(const T data) { this->storedData = data; this->key = NULL; this->next = nullptr; }
@@ -59,17 +54,18 @@ public:
 
 HASH_TEMPLATE struct Dict_Hash
 {
-public:
 	N key = NULL;
-	SingleNode<T>* next;
+	SingleNode<T>* next = nullptr;
 
 	Dict_Hash() { this->key = NULL; this->next = nullptr; }
-	Dict_Hash(N key) { this->storedData = data; this->key = key; this->next = nullptr; }
-	Dict_Hash(N key, const Dict_Hash& hash) { this->storedData = data; this->key = key; this->next = hash; }
-	Dict_Hash(const Dict_Hash& otherHash)  { this->key = otherHash.key; this->next = otherHash.hash; }
+	Dict_Hash(N key) { this->key = key; this->next = nullptr; }
+	Dict_Hash(const N key, const T data) { this->key = key; this->next = new SingleNode<T>(data); }
+	Dict_Hash(const Dict_Hash& otherHash)  { this->key = otherHash.key; this->next = otherHash.next; }
 	Dict_Hash<T, N>& operator = (const Dict_Hash<T, N>& otherHash) { this->key = otherHash.key; this->next = otherHash.next; return *this; }
 	~Dict_Hash() { this->key = NULL; this->next = nullptr; }
 
-	friend std::ostream& operator << (std::ostream& out, Dict_Hash& node) { std::cout << node.storedData; return out; }
-	friend std::istream& operator >> (std::istream& in, Dict_Hash& node) { in >> node.storedData; return in; }
+	friend std::ostream& operator << (std::ostream& out, Dict_Hash& node) { std::cout << node.key; return out; }
+	friend std::istream& operator >> (std::istream& in, Dict_Hash& node) { in >> node.key; return in; }
 };
+
+#endif

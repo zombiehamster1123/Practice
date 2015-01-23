@@ -2,6 +2,7 @@
 
 using namespace std;
 
+// Reverses the string passed in
 void MemoryReverseString(string& stringToReverse)
 {
 	char charFromString;
@@ -20,6 +21,7 @@ void MemoryReverseString(string& stringToReverse)
 	}
 };
 
+// Returns a new string but doesnot modify the old
 string RecurssionReverseString(string stringToReverse)
 {
 	if (stringToReverse != "")
@@ -63,10 +65,14 @@ void HeapSort(int listToSort[], int lengthOfList)
 
 void MyMergeIntoArray(int* a, int* b, int aLength, int bLength)
 {
+	// Add the b array into the a array 
 	int totalLength = aLength + bLength;
 	for (int i = aLength; i < totalLength; ++i)
 		a[i] = b[i - bLength - 1];
 
+	// Sort the newly combined a array
+	// running through and swapping 
+	// them to their proper place
 	for (int i = aLength; i < totalLength; ++i)
 	{
 		int holder = i;

@@ -1,47 +1,50 @@
-﻿Build started 1/13/2015 4:19:38 PM.
+﻿Build started 1/22/2015 4:58:38 PM.
      1>Project "G:\Career\Programming Practice\C++\Programming Practice\Programming Practice.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          G:\Programs\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
          main.cpp
-     1>g:\career\programming practice\c++\programming practice\bitwise.h(4): warning C4005: 'TEMPLATED' : macro redefinition
-                 g:\career\programming practice\c++\programming practice\nodes.h(4) : see previous definition of 'TEMPLATED'
-     1>g:\career\programming practice\c++\programming practice\singleylinkedlist.h(188): warning C4018: '<' : signed/unsigned mismatch
-                 g:\career\programming practice\c++\programming practice\singleylinkedlist.h(185) : while compiling class template member function 'void SingleyLinkedList<int>::Print(void)'
-                 g:\career\programming practice\c++\programming practice\singleylinkedlist.h(39) : see reference to function template instantiation 'void SingleyLinkedList<int>::Print(void)' being compiled
-                 g:\career\programming practice\c++\programming practice\main.cpp(48) : see reference to class template instantiation 'SingleyLinkedList<int>' being compiled
-     1>g:\career\programming practice\c++\programming practice\singleylinkedlist.h(105): warning C4018: '<' : signed/unsigned mismatch
-                 g:\career\programming practice\c++\programming practice\singleylinkedlist.h(100) : while compiling class template member function 'void SingleyLinkedList<int>::Release(void)'
-                 g:\career\programming practice\c++\programming practice\singleylinkedlist.h(119) : see reference to function template instantiation 'void SingleyLinkedList<int>::Release(void)' being compiled
-                 g:\career\programming practice\c++\programming practice\singleylinkedlist.h(52) : while compiling class template member function 'SingleyLinkedList<int>::SingleyLinkedList(T *,unsigned int)'
+     1>g:\career\programming practice\c++\programming practice\universalheaders.h(8): warning C4005: 'TEMPLATED' : macro redefinition
+                 g:\career\programming practice\c++\programming practice\bitwise.h(7) : see previous definition of 'TEMPLATED'
+     1>g:\career\programming practice\c++\programming practice\singleylinkedlist.h(218): warning C4018: '<' : signed/unsigned mismatch
+                 g:\career\programming practice\c++\programming practice\singleylinkedlist.h(215) : while compiling class template member function 'void SingleyLinkedList<int>::Print(void)'
+                 g:\career\programming practice\c++\programming practice\singleylinkedlist.h(65) : see reference to function template instantiation 'void SingleyLinkedList<int>::Print(void)' being compiled
+                 g:\career\programming practice\c++\programming practice\main.cpp(53) : see reference to class template instantiation 'SingleyLinkedList<int>' being compiled
+     1>g:\career\programming practice\c++\programming practice\singleylinkedlist.h(132): warning C4018: '<' : signed/unsigned mismatch
+                 g:\career\programming practice\c++\programming practice\singleylinkedlist.h(127) : while compiling class template member function 'void SingleyLinkedList<int>::Release(void)'
+                 g:\career\programming practice\c++\programming practice\singleylinkedlist.h(145) : see reference to function template instantiation 'void SingleyLinkedList<int>::Release(void)' being compiled
+                 g:\career\programming practice\c++\programming practice\singleylinkedlist.h(79) : while compiling class template member function 'SingleyLinkedList<int>::SingleyLinkedList(T *,unsigned int)'
                  with
                  [
                      T=int
                  ]
-                 g:\career\programming practice\c++\programming practice\main.cpp(54) : see reference to function template instantiation 'SingleyLinkedList<int>::SingleyLinkedList(T *,unsigned int)' being compiled
+                 g:\career\programming practice\c++\programming practice\main.cpp(59) : see reference to function template instantiation 'SingleyLinkedList<int>::SingleyLinkedList(T *,unsigned int)' being compiled
                  with
                  [
                      T=int
                  ]
-     1>g:\career\programming practice\c++\programming practice\singleylinkedlist.h(126): warning C4018: '<' : signed/unsigned mismatch
-                 g:\career\programming practice\c++\programming practice\singleylinkedlist.h(123) : while compiling class template member function 'SingleNode<T> *SingleyLinkedList<T>::EndOfList(void)'
+     1>g:\career\programming practice\c++\programming practice\singleylinkedlist.h(204): warning C4018: '<' : signed/unsigned mismatch
+                 g:\career\programming practice\c++\programming practice\singleylinkedlist.h(199) : while compiling class template member function 'SingleNode<T> *SingleyLinkedList<T>::IndexOf(unsigned int)'
                  with
                  [
                      T=int
                  ]
-                 g:\career\programming practice\c++\programming practice\singleylinkedlist.h(134) : see reference to function template instantiation 'SingleNode<T> *SingleyLinkedList<T>::EndOfList(void)' being compiled
+                 g:\career\programming practice\c++\programming practice\singleylinkedlist.h(176) : see reference to function template instantiation 'SingleNode<T> *SingleyLinkedList<T>::IndexOf(unsigned int)' being compiled
                  with
                  [
                      T=int
                  ]
        Link:
-         G:\Programs\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"G:\Career\Programming Practice\C++\Debug\Programming Practice.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"G:\Career\Programming Practice\C++\Debug\Programming Practice.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"G:\Career\Programming Practice\C++\Debug\Programming Practice.lib" /MACHINE:X86 Debug\Bitwise.obj
+         G:\Programs\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"G:\Career\Programming Practice\C++\Debug\Programming Practice.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"G:\Career\Programming Practice\C++\Debug\Programming Practice.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"G:\Career\Programming Practice\C++\Debug\Programming Practice.lib" /MACHINE:X86 Debug\AbstractFactory.obj
+         Debug\AbstractProductA.obj
+         Debug\Bitwise.obj
          Debug\main.obj
          Debug\PracticeMethods.obj
+         Debug\ProductA1.obj
+         Debug\SmartPointers.obj
          Debug\Threads.obj
-         Debug\Tree.obj
          Programming Practice.vcxproj -> G:\Career\Programming Practice\C++\Debug\Programming Practice.exe
      1>Done Building Project "G:\Career\Programming Practice\C++\Programming Practice\Programming Practice.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.81
+Time Elapsed 00:00:01.69

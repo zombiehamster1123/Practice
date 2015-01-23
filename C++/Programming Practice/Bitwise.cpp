@@ -1,5 +1,7 @@
 #include "bitwise.h"
 
+#define BIT_LIMIT 8
+
 int mult_by_pow_2(int number, int power)
 {
 	return number << power;
@@ -7,7 +9,7 @@ int mult_by_pow_2(int number, int power)
 
 TEMPLATED void printBitWise(T num)
 {
-	std::bitset<16> x(num);
+	std::bitset<BIT_LIMIT> x(num);
 	std::cout << num << " = " << x << "\n";
 }
 
@@ -57,7 +59,7 @@ int singlePlace(int place)
 // specified is within the range of bits
 bool checkPlace(int place)
 {
-	if (place < 9 && place > 0)
+	if (place < BIT_LIMIT && place >= 0)
 		return true;
 	else
 		return false;
@@ -66,7 +68,7 @@ bool checkPlace(int place)
 // Returns bit in number passed in
 int getBit(int num, int place)
 {
-	printBitWise(num);
+	//printBitWise(num);
 
 	if (checkPlace(place))
 		// (num & (1 << place)) - combine the two and only if both places are 1 keep bit
@@ -174,16 +176,11 @@ int bookInsertNumber(int destination, int source, int place1, int place2)
 
 int countBits(int source)
 {
-	//printBitWise(source);
 	int counter = 0;
-	while (source)
-	{
-		if (source % 2)
-			++counter;
-		source = source >> 1;
-	}
+	// x = x & (x - 1) - remove last significant bit
+	for (int x = source; x != 0; x = x & (x - 1))
+		++counter;
 
-	//std::cout << "Number of Bits: " << counter << "\n";
 	return counter;
 }
 
@@ -215,4 +212,67 @@ int maxXor2(int l, int r) {
 	}
 
 	return counter;
+}
+
+void bitOddEvenSwap(int num)
+{
+	printBitWise(num);
+	for (int i = 0; i < BIT_LIMIT; i += 2)
+	{
+		int holder1 = getBit(num, i);
+		int holder2 = getBit(num, i + 1);
+		if (getBit(num, i) != getBit(num, i + 1))
+		{
+			num = num ^ (1 << i);
+			num = num ^ (1 << i + 1);
+		}
+	}
+	printBitWise(num);
+}
+
+int bookSwapOddEvenBits(int num)
+{
+	printBitWise(num);
+
+	// (num & 0xaaaaaaaa) - mask all odd bits
+	// ((num & 0xaaaaaaaa) >> 1) - shift all even bits right 1
+	// (num & 0x55555555) - mask all even bits
+	// ((num & 0x55555555) << 1) - shift all odd bits left 1
+	// Then combine
+	int holder = (((num & 0xaaaaaaaa) >> 1) | ((num & 0x55555555) << 1));
+
+	printBitWise(holder);
+	return holder;
+}
+
+int numFlipConverts(int A, int B)
+{
+	printBitWise(A);
+	printBitWise(B);
+	// XOR to find all bits that will flip
+	int newNum = A ^ B, counter = 0;
+	printBitWise(newNum);
+
+	while (newNum)
+	{
+		// Add whether or not a bit exists at 1
+		// Then shift over and check
+		counter += newNum & 1;
+		newNum = newNum >> 1;
+	}
+
+	return counter;
+}
+
+int bookBitSwapRequired(int a, int b)
+{
+	int count = 0;
+	// c = c & (c - 1) - gets rid of the last significant bit
+	// Ex: 13 (1101) & 12 (1100) = 12 (1100)
+	// 12 (1100) & 11 (1011) = 8 (1000)
+	// 8 (1000) & 7 (0111) = 0
+	// Total - 3 times
+	for (int c = a ^ b; c != 0; c = c & (c - 1))
+		++count;
+	return count;
 }

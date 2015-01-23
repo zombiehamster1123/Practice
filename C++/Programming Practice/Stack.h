@@ -1,3 +1,6 @@
+#ifndef STACK_H
+#define STACK_H
+
 #include "SingleyLinkedList.h"
 
 TEMPLATED class Stack : public SingleyLinkedList<T>
@@ -8,9 +11,11 @@ public:
 	Stack(T*, UINT);
 	Stack(const Stack&);
 	Stack<T>& operator = (const Stack&);
+	~Stack();
 
 	void Push(T);
 	T Pop();
+	T Peek();
 
 	friend std::ostream& operator << (std::ostream& out, Stack& st) { st.Print(); return out; }
 };
@@ -25,10 +30,13 @@ TEMPLATED Stack<T>::Stack(const T data)
 
 TEMPLATED Stack<T>::Stack(T* arrayOfData, UINT arraySize)
 {
-	top = new SingleNode<T>(arrayOfData[0]);
+	if (arrayOfData != nullptr)
+	{
+		this->head = new SingleNode<T>(arrayOfData[0]);
 
-	for (size = 1; size < arraySize; ++i)
-		Push(arrayOfData[i]);
+		for (this->size = 1; this->size < arraySize; ++this->size)
+			Push(arrayOfData[this->size]);
+	}
 }
 
 TEMPLATED Stack<T>::Stack(const Stack<T>& stackToCopy)
@@ -45,6 +53,11 @@ TEMPLATED Stack<T>& Stack<T>::operator = (const Stack<T>& stackToCopy)
 	return *this;
 }
 
+TEMPLATED Stack<T>::~Stack()
+{
+	this->Release();
+}
+
 TEMPLATED void Stack<T>::Push(T data)
 {
 	SingleNode<T>* item = new SingleNode<T>(data);
@@ -53,6 +66,7 @@ TEMPLATED void Stack<T>::Push(T data)
 	++size;
 }
 
+// Remove the last element put onto the stack
 TEMPLATED T Stack<T>::Pop()
 {
 	if (head != nullptr)
@@ -68,3 +82,14 @@ TEMPLATED T Stack<T>::Pop()
 
 	return NULL;
 }
+
+// Return the top most element on the stack
+TEMPLATED T Stack<T>::Peek()
+{
+	if (this->head != nullptr)
+		return this->head->storedData;
+
+	return NULL;
+}
+
+#endif

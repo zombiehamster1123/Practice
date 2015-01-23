@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IPCDemo", "IPCDemo\IPCDemo.vcxproj", "{16C4884A-E3C8-49CA-9CF3-03B20F92E396}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IPCWorker", "IPCWorker\IPCWorker.vcxproj", "{678C7C83-9FD0-47A0-B499-A0C417B0593E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{16C4884A-E3C8-49CA-9CF3-03B20F92E396}.Debug|Win32.ActiveCfg = Debug|Win32
+		{16C4884A-E3C8-49CA-9CF3-03B20F92E396}.Debug|Win32.Build.0 = Debug|Win32
+		{16C4884A-E3C8-49CA-9CF3-03B20F92E396}.Release|Win32.ActiveCfg = Release|Win32
+		{16C4884A-E3C8-49CA-9CF3-03B20F92E396}.Release|Win32.Build.0 = Release|Win32
+		{678C7C83-9FD0-47A0-B499-A0C417B0593E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{678C7C83-9FD0-47A0-B499-A0C417B0593E}.Debug|Win32.Build.0 = Debug|Win32
+		{678C7C83-9FD0-47A0-B499-A0C417B0593E}.Release|Win32.ActiveCfg = Release|Win32
+		{678C7C83-9FD0-47A0-B499-A0C417B0593E}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -64,22 +64,32 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AbstractFactory.cpp" />
+    <ClCompile Include="AbstractProductA.cpp" />
     <ClCompile Include="Bitwise.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PracticeMethods.cpp" />
+    <ClCompile Include="ProductA1.cpp" />
+    <ClCompile Include="SmartPointers.cpp" />
     <ClCompile Include="Threads.cpp" />
-    <ClCompile Include="Tree.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AbstractFactory.h" />
+    <ClInclude Include="AbstractProductA.h" />
     <ClInclude Include="Bitwise.h" />
+    <ClInclude Include="Client.h" />
     <ClInclude Include="Dictionary.h" />
     <ClInclude Include="HashTable.h" />
+    <ClInclude Include="ProductA1.h" />
+    <ClInclude Include="Queue.h" />
+    <ClInclude Include="SmartPointers.h" />
     <ClInclude Include="Stack.h" />
     <ClInclude Include="Threads.h" />
     <ClInclude Include="Tree.h" />
     <ClInclude Include="Nodes.h" />
     <ClInclude Include="SingleyLinkedList.h" />
     <ClInclude Include="PracticeMethods.h" />
+    <ClInclude Include="UniversalHeaders.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
